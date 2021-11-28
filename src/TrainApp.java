@@ -36,7 +36,7 @@ public class TrainApp {
 
         Train train1 = new Train(56);
         Train train2 = new Train(77);
-        Train train3 = new Train(81);
+        Train train3 = new Train(77);
 
 
         Depot depot = new Depot(3);
