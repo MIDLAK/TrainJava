@@ -8,7 +8,11 @@ public class Train implements Subject {
     private int capacity;   //максимальное кол-во пассажиров
 
     Train(){
-        this(new TrainRoute(), 0, 0);
+        this(new TrainRoute(), 0, 1);
+    }
+
+    Train(int trainID){
+        this(new TrainRoute(), trainID, 1);
     }
 
     Train(TrainRoute route, int trainID, int capacity) {

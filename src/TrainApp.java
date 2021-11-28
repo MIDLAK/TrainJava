@@ -23,7 +23,17 @@ public class TrainApp {
         Calendar des = new GregorianCalendar(2021, Calendar.OCTOBER, 25, 12, 55);
         trainRoute = new TrainRoute("Барнаул", "Новосибирск", dep, des);
 
-        Train train = new Train(trainRoute, 15, 55);
+        System.out.println("-------------*Демонстрация конструкторов*-------------");
+        Train train = new Train();
+        train.print();
+        System.out.println("------------------------------------------------------");
+        train = new Train(25);
+        train.print();
+        System.out.println("------------------------------------------------------");
+        train = new Train(trainRoute, 15, 55);
+        train.print();
+        System.out.println("------------------------------------------------------");
+
 
         Ticket ticket = new Ticket(155, 3, passenger1, train);
         ticket.print();
