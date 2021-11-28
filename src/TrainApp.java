@@ -34,6 +34,29 @@ public class TrainApp {
         train.print();
         System.out.println("------------------------------------------------------");
 
+        Train train1 = new Train(56);
+        Train train2 = new Train(77);
+        Train train3 = new Train(81);
+
+
+        Depot depot = new Depot(3);
+        try {
+            depot.toParkTrain(train2);
+            depot.toParkTrain(train1);
+            depot.toParkTrain(train3);
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        depot.print();
+        try {
+            Train tr = depot.toLeaveTrain(56);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        depot.print();
+
 
         Ticket ticket = new Ticket(155, 3, passenger1, train);
         ticket.print();

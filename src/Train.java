@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Train implements Subject {
@@ -29,6 +30,8 @@ public class Train implements Subject {
             this.capacity = 0;
         }
     }
+
+
 
     public void registerObserver(Observer o){
         observers.add(o);
