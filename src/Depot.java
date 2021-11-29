@@ -18,7 +18,6 @@ public class Depot {
             for (int i = 0, len = trains.length; i < len; i++) {
                 if (trains[i] == null && b) {
                     trains[i] = train;
-                    b = true;
                     break;
                 }
             }

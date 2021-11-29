@@ -88,7 +88,6 @@ public class Passenger {
     }
 
     private boolean isValidFirstName(String firstName) {
-
         return firstName.trim().length() > 0;
     }
 

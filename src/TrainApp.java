@@ -7,14 +7,15 @@ public class TrainApp {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         Passenger passenger1 = new Passenger("Вадим", "Калуга", 19);
-        /*
-        System.out.println(passenger1.toString());
+        while (true)
         try {
             passenger1.userInput();
+            break;
         } catch (IOException | NumberFormatException e) {
             e.printStackTrace();
+            System.out.println("\nПожалуйста, повторите ввод.");
         }
-        */
+        System.out.println(passenger1.toString());  //вывод строкового представления пользователя
 
 
         TrainRoute trainRoute = new TrainRoute();
@@ -36,7 +37,7 @@ public class TrainApp {
 
         Train train1 = new Train(56);
         Train train2 = new Train(77);
-        Train train3 = new Train(77);
+        Train train3 = new Train(81);
 
 
         Depot depot = new Depot(3);
