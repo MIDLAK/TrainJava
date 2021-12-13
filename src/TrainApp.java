@@ -8,13 +8,13 @@ public class TrainApp {
 
         Passenger passenger1 = new Passenger("Вадим", "Калуга", 19);
         while (true)
-        try {
-            passenger1.userInput();
-            break;
-        } catch (IOException | NumberFormatException e) {
-            e.printStackTrace();
-            System.out.println("\nПожалуйста, повторите ввод.");
-        }
+            try {
+                passenger1.userInput();
+                break;
+            } catch (IOException | NumberFormatException e) {
+                e.printStackTrace();
+                System.out.println("\nПожалуйста, повторите ввод.");
+            }
         System.out.println(passenger1.toString());  //вывод строкового представления пользователя
 
 
@@ -46,14 +46,14 @@ public class TrainApp {
             depot.toParkTrain(train1);
             depot.toParkTrain(train3);
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         depot.print();
         try {
             Train tr = depot.toLeaveTrain(56);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         depot.print();
@@ -62,12 +62,50 @@ public class TrainApp {
         Ticket ticket = new Ticket(155, 3, passenger1, train);
         ticket.print();
 
-        TrainRoute.setDateFormat("yyyy-MM-dd HH:mm:ss");	//пример вывода 2008-05-30 08:20:12
+        TrainRoute.setDateFormat("yyyy-MM-dd HH:mm:ss");    //пример вывода 2008-05-30 08:20:12
 
-        try{
-            train.setTrainID(55);	//для демонстрации наблюдателя
-        } catch (Exception e){
+        try {
+            train.setTrainID(55);    //для демонстрации наблюдателя
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+        /*создание массива в 5 строк*/
+        TrainRoute[][] array = new TrainRoute[6][];
+
+        /*выделение памяти "под столбцы"*/
+        for (int i = 0; i < 5; i++) {
+            array[i] = new TrainRoute[i + 1];
+        }
+
+        /*заполнение "треугольного" массива*/
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                array[i][j] = new TrainRoute("пункт №" + i + "" + j, "пункт №" + i + "" + (j + 1), new GregorianCalendar(), new GregorianCalendar());
+            }
+        }
+
+        /*вывод "треугольного" массива*/
+        for (int i = 0; i < 5; i++) {
+            System.out.println("");
+            for (int j = 0; j < array[i].length; j++) {
+                System.out.print('[' + array[i][j].getDeparture() + "->" + array[i][j].getDestination() + ']');
+            }
+        }
+
+        /*одномерный массив поездов*/
+        Train[] trainArray = new Train[15];
+
+        /*выделение памяти под поезда с маршрутами из массива array*/
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                int k = i + j + (int)(i*(i-1)/2); // магическая формула
+                trainArray[k] = new Train(array[i][j], k+1, (i + j) * 100 + 1);
+                System.out.println("Поезд №" + trainArray[k].getTrainID() + " (" + trainArray[k].getRoute().getDeparture() + "->" + trainArray[k].getRoute().getDestination() + ")");
+            }
+        }
+
+
     }
 }
