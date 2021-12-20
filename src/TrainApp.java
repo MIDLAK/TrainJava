@@ -4,9 +4,12 @@ import java.util.GregorianCalendar;
 
 public class TrainApp {
     public static void main(String[] args) {
+        TicketFactory ticketFactory = new TicketFactory();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         Passenger passenger1 = new Passenger("Вадим", "Калуга", 19);
+        Passenger passenger2 = new Passenger("Егор", "Голиков", 19);
+        Passenger passenger3 = new Passenger("Шевченко", "Валерия", 19);
         while (true)
             try {
                 passenger1.userInput();
@@ -59,8 +62,37 @@ public class TrainApp {
         depot.print();
 
 
-        Ticket ticket = new Ticket(155, 3, passenger1, train);
-        ticket.print();
+        Ticket lux = ticketFactory.createTicket(TypeCar.LUX);
+        Ticket mid = ticketFactory.createTicket(TypeCar.MIDDLE);
+        Ticket eco = ticketFactory.createTicket(TypeCar.ECONOM);
+
+        lux.setPassenger(passenger1);
+        lux.setTrain(train);
+        try {
+            lux.setSeat(11);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        mid.setPassenger(passenger2);
+        mid.setTrain(train);
+        try {
+            mid.setSeat(22);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        eco.setPassenger(passenger3);
+        eco.setTrain(train);
+        try {
+            eco.setSeat(33);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        lux.print();
+        mid.print();
+        eco.print();
 
         TrainRoute.setDateFormat("yyyy-MM-dd HH:mm:ss");    //пример вывода 2008-05-30 08:20:12
 
@@ -72,7 +104,7 @@ public class TrainApp {
 
 
         /*создание массива в 5 строк*/
-        TrainRoute[][] array = new TrainRoute[6][];
+        TrainRoute[][] array = new TrainRoute[5][];
 
         /*выделение памяти "под столбцы"*/
         for (int i = 0; i < 5; i++) {

@@ -1,8 +1,12 @@
-public class Ticket implements Observer {
+import java.util.ArrayList;
+
+public abstract class Ticket implements Observer {
     private int price;
     private int seat;
     private Passenger passenger;
     private Train train;
+
+    ArrayList<String>  options;
 
     Ticket(){
         this(0, 0, new Passenger(), new Train());
@@ -37,6 +41,8 @@ public class Ticket implements Observer {
         System.out.println("Место: " + seat);
         passenger.print();
         train.print();
+
+        printOptions();
         System.out.println("---------------------------------");
     }
 
@@ -105,4 +111,7 @@ public class Ticket implements Observer {
             throw new NullPointerException("На поезд была передана null сслыка!");
         }
     }
+
+    public abstract void printOptions();
+
 }
